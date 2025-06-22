@@ -54,7 +54,6 @@ export const auth = betterAuthConfig({
     changeEmail: {
       enabled: true,
       sendChangeEmailVerification: async ({ user, newEmail, url, token }) => {
-        // Send change email verification
         console.info("SEND_CHANGE_EMAIL_VERIFICATION", {
           user,
           newEmail,
@@ -73,7 +72,6 @@ export const auth = betterAuthConfig({
           url: string;
           token: string;
         }) => {
-          // Send delete account verification
           console.info("SEND_DELETE_ACCOUNT_VERIFICATION", {
             user,
             url,
@@ -81,11 +79,9 @@ export const auth = betterAuthConfig({
           });
         },
         beforeDelete: async (user: User) => {
-          // Perform actions before user deletion
           console.info("BEFORE_DELETE", { user });
         },
         afterDelete: async (user: User) => {
-          // Perform cleanup after user deletion
           console.info("AFTER_DELETE", { user });
         },
       },

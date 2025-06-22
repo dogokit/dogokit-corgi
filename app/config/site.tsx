@@ -12,7 +12,9 @@ export const configSite: ConfigSite = {
   links: {
     x: "https://x.com/mhaidarhanif",
     github: "https://github.com/dogokit/dogokit-corgi",
+    youtube: "https://youtube.com/mhaidarhanif",
   },
+  urlShortener: "https://example.com",
 
   authOptions: ["social", "passkey", "email", "magic", "anonymous"],
   socialProviders: ["google", "github"],
@@ -35,6 +37,8 @@ export const configSite: ConfigSite = {
   ],
 };
 
+// TODO: Zod Schema
+
 export type ConfigSite = {
   id: string;
   name: string;
@@ -42,6 +46,7 @@ export type ConfigSite = {
   ogImage?: string;
   description: string;
   links: Partial<Record<SocialProvider, string>>;
+  urlShortener?: string;
 
   authOptions: AuthOption[];
   socialProviders: SocialProvider[];
@@ -67,8 +72,9 @@ export type SocialProvider =
   | "spotify"
   | "twitch"
   | "twitter"
-  | "zoom"
-  | "x";
+  | "x"
+  | "youtube"
+  | "zoom";
 
 export type SocialProviderButton = {
   provider: SocialProvider;

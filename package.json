@@ -89,7 +89,8 @@
     "ts-plugin-sort-import-suggestions": "^1.0.4",
     "tunnel-rat": "^0.1.2",
     "vaul": "^1.1.2",
-    "zod": "^3.25.67"
+    "zod": "^3.25.67",
+    "zodix": "^0.4.4"
   },
   "devDependencies": {
     "@better-auth/cli": "^1.2.10",

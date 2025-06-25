@@ -82,10 +82,10 @@ export function HTMLDocumentThemed({
   const [theme] = useTheme();
 
   return (
-    <html lang="en" className={clsx(theme)}>
+    <html className={clsx(theme)} lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
         <Meta />
         <PreventFlashOnWrongTheme ssrTheme={Boolean(loaderData.theme)} />
         <Links />
@@ -97,7 +97,7 @@ export function HTMLDocumentThemed({
         <ScrollRestoration />
         <Scripts />
 
-        <Toaster richColors theme={theme ?? "system"} closeButton />
+        <Toaster closeButton richColors theme={theme ?? "system"} />
       </body>
     </html>
   );
@@ -127,7 +127,8 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <pre className="text-xs">{error.data}</pre>
       </HTMLDocument>
     );
-  } else if (error instanceof Error) {
+  }
+  if (error instanceof Error) {
     return (
       <HTMLDocument>
         <ContentHeading>Error</ContentHeading>
@@ -136,11 +137,10 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
         <pre className="text-xs">{error.stack}</pre>
       </HTMLDocument>
     );
-  } else {
-    return (
-      <HTMLDocument>
-        <ContentHeading>Unknown Error</ContentHeading>
-      </HTMLDocument>
-    );
   }
+  return (
+    <HTMLDocument>
+      <ContentHeading>Unknown Error</ContentHeading>
+    </HTMLDocument>
+  );
 }

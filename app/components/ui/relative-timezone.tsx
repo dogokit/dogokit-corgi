@@ -78,7 +78,7 @@ export const RelativeTime = ({
 
   useEffect(() => {
     if (controlledTime) {
-      return undefined;
+      return;
     }
 
     const interval = setInterval(() => {

@@ -7,7 +7,7 @@ export function useOneTap() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    void authClient.oneTap({
+    authClient.oneTap({
       fetchOptions: {
         onSuccess: () => {
           navigate(href("/dashboard"));

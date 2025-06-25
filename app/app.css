@@ -146,6 +146,13 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+  body {
+    @apply cursor-default transition-colors;
+    @apply selection:bg-primary/20;
+  }
+  img {
+    @apply selection:bg-primary/25;
+  }
   h1,
   h2,
   h3,

@@ -1,3 +1,10 @@
+// Prisma Schema
+// 
+// Docs:
+// https://better-auth.com/docs/adapters/prisma
+// https://better-auth.com/docs/guides/optimizing-for-performance#database-optimizations
+// ---
+
 generator client {
   provider        = "prisma-client"
   previewFeatures = ["relationJoins"]
@@ -48,7 +55,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@index([email])
+  @@index([email, username])
 }
 
 model Session {
@@ -141,6 +148,14 @@ model Passkey {
   updatedAt DateTime? @updatedAt
 
   @@index([userId])
+}
+
+model RateLimit {
+  id String @id
+
+  key         String?
+  count       Int?
+  lastRequest BigInt?
 }
 
 model Example {

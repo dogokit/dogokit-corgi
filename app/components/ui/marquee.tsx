@@ -21,8 +21,8 @@ export const MarqueeContent = ({
   ...props
 }: MarqueeContentProps) => (
   <FastMarquee
-    loop={loop}
     autoFill={autoFill}
+    loop={loop}
     pauseOnHover={pauseOnHover}
     {...props}
   />

@@ -7,7 +7,7 @@ import type { BetterAuthResponseOAuth } from "@/server/auth-helper";
 import { auth } from "@/server/better-auth";
 import type { Route } from "./+types/social";
 
-export async function loader() {
+export function loader() {
   return redirect("/signin");
 }
 
@@ -35,6 +35,6 @@ export async function action({ request }: Route.ActionArgs) {
   }
 
   await timer.delay();
-  if (!json.redirect || !json.url) return null;
+  if (!(json.redirect && json.url)) return null;
   return redirect(json.url);
 }

@@ -13,93 +13,204 @@
 
 ### Tech Stack and Setup
 
-- [x] TypeScript
-- [x] Bun v1
-- [x] Biome v2
-- [x] Vite v6
-- [x] React v19
-- [x] React Router v7 Framework (Remix)
-  - [x] Themes
+Core:
+
+- [x] [React v19](https://react.dev)
+- [x] [React Router v7 Framework (Remix)](https://reactrouter.com)
+  - [x] [Themes: System, Light, Dark](https://github.com/abereghici/remix-themes)
   - [x] Integration with tRPC and Better Auth
-- [x] tRPC v11
-- [x] Prisma ORM v6
-- [x] Tailwind CSS v4
-  - [x] `shadcn/ui` with single `radix-ui`
-  - [ ] React Email
-- [x] Zod v4 & Conform v1
-- [x] Better Auth v1
-- [x] Docker v28
-- [x] PostgreSQL v17
-- [ ] Vitest v3
-- [ ] Resend or Amazon SES
-- [ ] Uploadcare or Cloudflare R2
-- [ ] Polar Payment
-- [ ] Arcjet Security
-- [x] VS Code Settings and Cursor Rules
+  - [x] [Vercel Config](https://vercel.com/docs/frameworks/react-router), can be removed if not needed
+- [x] [tRPC v11](https://trpc.io)
+- [x] [Prisma ORM v6](https://prisma.io)
+- [x] [Tailwind CSS v4](https://tailwindcss.com)
+  - [x] [`shadcn/ui`](https://ui.shadcn.com) with single [`radix-ui`](https://radix-ui.com)
+  - [ ] More from [Kibo UI](https://kibo-ui.com), [Origin UI](https://originui.com)
+  - [ ] [React Email v4](https://react.email)
+- [x] [Zod v4](https://zod.dev) & [Conform v1](https://conform.guide)
+- [x] [Better Auth v1](https://better-auth.com)
+- [ ] [Unpic](https://unpic.pics)
 
-## Getting Started
+Config:
 
-### Environment Variables
+- [x] [TypeScript](https://typescriptlang.org)
+- [x] [Bun v1](https://bun.sh)
+- [x] [Biome v2](https://biomejs.dev)
+  - [x] [Ultracite](https://ultracite.ai)
+- [x] [Vite v7](https://vitejs.dev)
+  - [x] [t3-env](https://env.t3.gg)
+- [ ] [Vitest v3](https://vitest.dev)
+- [x] [Docker v28](https://docker.com)
+- [x] [PostgreSQL v17](https://postgresql.org)
+- [ ] [Playwright](https://playwright.dev)
+- [ ] [Storybook](https://storybook.js.org)
+- [ ] [Turborepo](https://turbo.build)
 
-Crucially, replace "BetterAuth Secret" with a strong, randomly generated secret. Use openssl or the secret generator in the BetterAuth documentation to create a secure secret. Do not use the placeholder value in a production environment!
+Optional:
 
-To use Google as a social provider, you need to get your Google credentials. You can get them by creating a new project in the Google Cloud Console.
-In the Google Cloud Console > Credentials > Authorized redirect URIs, make sure to set the redirect URL to http://localhost:5173/api/auth/callback/google for local development. For production, make sure to set the redirect URL as your application domain, e.g. https://example.com/api/auth/callback/google. If you change the base path of the auth routes, you should update the redirect URL accordingly.
+- [x] [VS Code: Settings and Extensions](https://code.visualstudio.com/docs/configure/settings)
+- [x] [Cursor: Rules](https://docs.cursor.com/context/rules)
+- [ ] Email: [Resend](https://resend.com), [Amazon SES](https://aws.amazon.com/ses)
+- [ ] File Upload & Image: [Uploadcare](https://uploadcare.com), [Cloudflare R2](https://cloudflare.com/products/r2), [Imgix](https://imgix.com)
+- [ ] Payment: [Polar](https://polar.sh)
+- [ ] Error Tracking: [Sentry](https://sentry.io)
+- [ ] Analytics: [Posthog](https://posthog.com)
+- [ ] Security: [Arcjet](https://arcjet.com)
+- [ ] API Key: [Unkey](https://unkey.dev)
+- [ ] Documentation: [Fumadocs](https://fumadocs.com)
+- AI Agents
+  - [ ] General: [Codegen](https://codegen.com)
+  - [ ] Code Review: [CodeRabbit](https://coderabbit.ai)
 
-This repo is using Neon Postgres as our database. make sure to replace the placeholder connection string with your actual Neon Postgres connection string.
+## Get Started
 
-### Setup Environment Variables and Compose
+### Setup Dependencies
 
-Copy from `.env.example` to `.env` and fill in the required values:
+Use [Bun](https://bun.sh) for dependency management and scripts. Ensure [Bun is installed](https://bun.sh/docs/installation):
 
-```bash
-cp -n .env.example .env
+```sh
+curl -fsSL https://bun.sh/install | bash
 ```
 
-Also make sure to reconfigure the default `docker-compose.yml` port for PostgreSQL.
+Install dependencies:
 
-### Installation
-
-Install the dependencies:
-
-```bash
+```sh
 bun install
 ```
 
-### Start Database
+### Code Quality
+
+Check, format, lint to ensure the setup is fine:
+
+```sh
+bun check
+```
+
+If want to automatically format & lint the code:
+
+```sh
+bun write
+```
+
+### Environment Variables
+
+Create the `.env` file from `.env.example`. This is only for local development, not production:
+
+```sh
+cp -i .env.example .env
+```
+
+Configure the required environment variables if on local, otherwise in the project settings on other environments.
+
+If necessary, create the `.env.prod` for production info. Adjust accordingly if needed for `staging`, `test`, etc. Be careful to change the `URL` variables on different domains and subdomains.
+
+```sh
+cp -i .env.example .env.prod
+```
+
+Then change all the examples.
+
+Required:
+
+- `VITE_APP_URL`
+- `BETTER_AUTH_SECRET`
+- `POSTGRES_USER`
+- `POSTGRES_PASSWORD`
+- `POSTGRES_DB`
+- `POSTGRES_HOST_PORT`
+- `DATABASE_URL`
+
+Optional:
+
+- `*_CLIENT_ID` and `*_CLIENT_SECRET`: For OAuth related, [check Guide: OAuth](./docs/GUIDE_OAUTH.md)
+- `*_ACCESS_TOKEN` and `*_WEBHOOK_SECRET` for payment related.
+
+### Database Setup
+
+Prisma ORM is used to communicate with the database easily.
+
+The default is PostgreSQL from local system, Docker container, or with services like Prisma Postgres, Neon, Supabase.
+
+Start local database with Docker Compose:
 
 ```bash
 bun db:up
-# docker compose up -d
 ```
 
-### Database Migration
+Migrate database:
 
-Migrate the database:
-
-```bash
+```sh
 bun db:migrate
-# prisma db migrate dev
+```
+
+Seed initial data:
+
+```sh
+bun db:seed
+```
+
+Open Prisma Studio:
+
+```sh
+bun db:studio
+```
+
+Reset when needed:
+
+```sh
+bun db:reset
 ```
 
 ### Development
 
-Start the development server:
+Run the development server:
 
-```bash
+```sh
 bun dev
-# react-router dev
 ```
 
-Application is available at `http://localhost:5173`.
+Open <http://localhost:8000> then we're ready
 
-## Building for Production
+### Production Deployment
 
-Create a production build, that will also migrate deploy and generate Prisma client:
+Pick a host to deploy it to, such as:
 
-```bash
+- Vercel
+- Netlify
+- Render.com
+- Railway.com
+- Fly.io
+- Google Cloud (GCP)
+- Amazon Web Services (AWS)
+- Microsoft Azure
+- VPS with Coolify, Dokploy, etc
+
+Then setup accordingly.
+
+For example, if not using Vercel, remove `vercelPreset` in `react-router.config.ts`.
+
+It's also recommended to use secret management for environment variables, such as:
+
+- Doppler
+- Infisical
+
+### Production Build
+
+Check if the production build is fine:
+
+```sh
 bun run build
-# bun db:migrate:deploy && bun db:gen:prod && react-router build
+```
+
+Migrate database for production:
+
+```sh
+bun db:migrate:deploy
+```
+
+Then run:
+
+```sh
+bun start
 ```
 
 ## References
@@ -124,7 +235,7 @@ Originally created by [🧊Haidar](https://github.com/mhaidarhanif)
 - [🐻Bearmentor](https://bearmentor.com)
 - [🐱Catamyst](https://catamyst.com)
 - [🐶Dogokit](https://dogokit.allnimal.com)
-- [🐘Elephanity](https://elevanty.allnimal.com)
+- [🐘Elevanty](https://elevanty.allnimal.com)
 
 ### Tech Stack Comparison
 
@@ -141,11 +252,10 @@ What the tech stack choice replaces or each alternatives:
 - Zod = Joi, Yup
 - Conform = TanStack Form, Formik, React Hook Form
 - Better Auth = Passport.js, Auth0, Firebase Auth, Auth.js/NextAuth.js, Clerk
-- Docker
+- Docker and Docker Compose = Manual install into OS
 - PostgreSQL = MySQL, SQLite, MongoDB, DynamoDB, Firestore
 - Vite = Webpack, Parcel
 - Vitest = Jest, Mocha, Jasmine
 - Resend or Amazon SES = SendGrid, Mailgun, Postmark, SMTP
 - Uploadcare or Cloudflare R2 = Amazon S3, Cloudinary, MinIO, Firebase Storage
 - Polar Payment = Stripe, PayPal, Braintree
-- Arcjet Security

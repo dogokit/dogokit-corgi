@@ -5,6 +5,7 @@ export function AboutHero() {
   return (
     <section className="container max-w-xl">
       <ContentHeading>About</ContentHeading>
+
       <article className="prose-config">
         <ContentIntro>
           <p>
@@ -23,41 +24,41 @@ export function AboutHero() {
           <Anchor href="https://github.com/mhaidarhanif">M Haidar Hanif</Anchor>
           .
         </p>
+
         <h2>References</h2>
-        <p>
-          <ul>
-            <li>
-              <Anchor href="https://ui.shadcn.com">shadcn/ui</Anchor>
-            </li>
-            <li>
-              <Anchor href="https://originui.com">OriginUI</Anchor>
-            </li>
-            <li>
-              <Anchor href="https://kibo-ui.com">Kibo UI</Anchor>
-            </li>
-            <li>
-              <Anchor href="https://shadcn-registries.vercel.app">
-                shadcn Registries
-              </Anchor>
-            </li>
-            <li>
-              <Anchor href="https://registry.directory">
-                registry.directory
-              </Anchor>
-            </li>
-            <li>
-              <Anchor href="https://demo.better-auth.com">
-                Better Auth Demo
-              </Anchor>
-            </li>
-            <li>
-              <Anchor href="https://github.com/ayoubphy/react-router-trpc-prisma-better-auth">
-                <code>ayoubphy/react-router-trpc-prisma-better-auth</code>
-              </Anchor>
-            </li>
-          </ul>
-        </p>
-        <h2>Related Projects</h2>
+        <ul>
+          <li>
+            <Anchor href="https://ui.shadcn.com">shadcn/ui</Anchor>
+          </li>
+          <li>
+            <Anchor href="https://originui.com">OriginUI</Anchor>
+          </li>
+          <li>
+            <Anchor href="https://kibo-ui.com">Kibo UI</Anchor>
+          </li>
+          <li>
+            <Anchor href="https://shadcn-registries.vercel.app">
+              shadcn Registries
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href="https://registry.directory">
+              registry.directory
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href="https://demo.better-auth.com">
+              Better Auth Demo
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href="https://github.com/ayoubphy/react-router-trpc-prisma-better-auth">
+              <code>ayoubphy/react-router-trpc-prisma-better-auth</code>
+            </Anchor>
+          </li>
+        </ul>
+
+        <h2>Relations</h2>
         <ul>
           <li>
             <Anchor href="https://github.com/allnimal">🐾Allnimal</Anchor>
@@ -72,7 +73,7 @@ export function AboutHero() {
             <Anchor href="https://github.com/dogokit">🐶Dogokit</Anchor>
           </li>
           <li>
-            <Anchor href="https://allnimal.com">🐘Elevanty</Anchor>
+            <Anchor href="https://github.com/allnimal">🐘Elevanty</Anchor>
           </li>
         </ul>
       </article>

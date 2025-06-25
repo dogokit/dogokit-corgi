@@ -18,10 +18,10 @@ export const avatarAutoVariants = cva("", {
   },
   compoundVariants: [
     { size: "xs", class: "text-base" },
-    { size: "sm", class: "text-lg" },
-    { size: "default", class: "text-3xl" },
-    { size: "lg", class: "text-4xl" },
-    { size: "xl", class: "text-5xl" },
+    { size: "sm", class: "text-sm" },
+    { size: "default", class: "text-2xl" },
+    { size: "lg", class: "text-3xl" },
+    { size: "xl", class: "text-4xl" },
   ],
   defaultVariants: {
     size: "default",
@@ -42,24 +42,23 @@ interface AvatarAutoProps
  */
 export function AvatarAuto({
   user,
-  imageUrl,
   size,
+  className,
   ...props
 }: AvatarAutoProps) {
   const placeholderText = user.username || user.name;
+  const imageUrl = user.image || getAvatarPlaceholderUrl(placeholderText) || "";
 
   return (
     <Avatar
+      className={cn(avatarAutoVariants({ size }), "bg-secondary", className)}
       {...props}
-      className={cn(avatarAutoVariants({ size }), "bg-secondary")}
     >
-      <AvatarImage
-        src={imageUrl || getAvatarPlaceholderUrl(placeholderText)}
-        alt={user.name}
-      />
-
+      <AvatarImage alt={user.name} className="bg-secondary" src={imageUrl} />
       {!imageUrl && (
-        <AvatarFallback>{getNameInitials(user.name)}</AvatarFallback>
+        <AvatarFallback className="bg-secondary">
+          {getNameInitials(user.name)}
+        </AvatarFallback>
       )}
     </Avatar>
   );
@@ -88,8 +87,8 @@ export function AvatarAutoNext({
   return (
     <Avatar className={cn("rounded-lg", className)} {...props}>
       <AvatarImage
-        src={userImageSource}
         alt={user.name || user.email || "User avatar"}
+        src={userImageSource}
       />
       <AvatarFallback>{userImageFallback}</AvatarFallback>
     </Avatar>

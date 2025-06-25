@@ -55,6 +55,7 @@ export const GlimpseImage = ({
   ...props
 }: GlimpseImageProps) => {
   return (
+    // biome-ignore lint/performance/noImgElement: "It is fine"
     <img
       alt={alt ?? "Glimpse"}
       className={cn(

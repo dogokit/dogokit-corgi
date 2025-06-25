@@ -17,6 +17,7 @@ type BannerContextProps = {
 
 export const BannerContext = createContext<BannerContextProps>({
   show: true,
+  // biome-ignore lint/suspicious/noEmptyBlockStatements: "From shadcn/ui. Flexible to change"
   setShow: () => {},
 });
 
@@ -97,12 +98,12 @@ export const BannerAction = ({
   ...props
 }: BannerActionProps) => (
   <Button
-    variant={variant}
-    size={size}
     className={cn(
       "shrink-0 bg-transparent hover:bg-background/10 hover:text-background",
       className
     )}
+    size={size}
+    variant={variant}
     {...props}
   />
 );
@@ -125,13 +126,13 @@ export const BannerClose = ({
 
   return (
     <Button
-      variant={variant}
-      size={size}
-      onClick={handleClick}
       className={cn(
         "shrink-0 bg-transparent hover:bg-background/10 hover:text-background",
         className
       )}
+      onClick={handleClick}
+      size={size}
+      variant={variant}
       {...props}
     >
       <XIcon size={18} />

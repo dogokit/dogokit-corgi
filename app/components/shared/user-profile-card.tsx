@@ -1,13 +1,13 @@
 import { Form, href, useNavigate } from "react-router";
 import { AvatarAuto } from "@/components/shared/avatar-auto";
 import { ButtonLoading } from "@/components/shared/button-loading";
+import { IconBooleanValue } from "@/components/shared/icon-boolean-value";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import type { User } from "@/generated/prisma/client";
 import { authClient } from "@/lib/better-auth-client";
 import { formatDate } from "@/lib/datetime";
 import { cn } from "@/lib/utils";
-import { IconBooleanValue } from "./icon-boolean-value";
 
 type UserField = {
   label: string;
@@ -73,18 +73,18 @@ export function UserProfileCard({ user }: { user: User }) {
 
       <CardContent className="space-y-4">
         <div className="flex items-center justify-center gap-2">
-          <Button size="xs" variant="outline" onClick={addPasskey}>
+          <Button onClick={addPasskey} size="xs" variant="outline">
             <span>Add Passkey</span>
           </Button>
-          <Button size="xs" variant="outline" onClick={revokeOtherSessions}>
+          <Button onClick={revokeOtherSessions} size="xs" variant="outline">
             <span>Revoke All Sessions</span>
           </Button>
-          <Form method="post" action={href("/signout")}>
+          <Form action={href("/signout")} method="post">
             <ButtonLoading
               size="xs"
-              variant="outline"
-              type="submit"
               submittingText="Signing Out..."
+              type="submit"
+              variant="outline"
             >
               Sign Out
             </ButtonLoading>
@@ -95,8 +95,8 @@ export function UserProfileCard({ user }: { user: User }) {
           {userFields.map((item) => {
             return (
               <div
-                key={item.label}
                 className="flex items-center justify-between py-2"
+                key={item.label}
               >
                 <dt className="font-medium text-gray-700 dark:text-gray-300">
                   {item.label}

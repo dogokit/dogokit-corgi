@@ -1,6 +1,7 @@
 import { formatHex, oklch } from "culori";
 import QR from "qrcode";
 import { type HTMLAttributes, useEffect, useState } from "react";
+import { devlog } from "@/lib/logger";
 import { cn } from "@/lib/utils";
 
 export type QRCodeProps = HTMLAttributes<HTMLDivElement> & {
@@ -63,8 +64,8 @@ export const QRCode = ({
         });
 
         setSVG(newSvg);
-      } catch (err) {
-        console.error("QR_CODE", err);
+      } catch (error) {
+        devlog.error("QR_CODE", error);
       }
     };
 

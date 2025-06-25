@@ -45,12 +45,12 @@ export function FormDelete({
     fetcher.state === "submitting" && fetcher.formMethod === "DELETE";
 
   return (
-    <AlertDialog open={open} onOpenChange={setOpen}>
+    <AlertDialog onOpenChange={setOpen} open={open}>
       <AlertDialogTrigger asChild className={className}>
         {dialogTrigger ? (
           dialogTrigger
         ) : (
-          <Button variant="outline" size="xs" disabled={disabled}>
+          <Button disabled={disabled} size="xs" variant="outline">
             <TrashIcon />
             <span>{buttonText}</span>
           </Button>
@@ -76,19 +76,19 @@ export function FormDelete({
             }}
           >
             {name && defaultValue && (
-              <input type="hidden" name={name} defaultValue={defaultValue} />
+              <input defaultValue={defaultValue} name={name} type="hidden" />
             )}
 
             {extraComponent}
 
             <ButtonLoading
-              type="submit"
-              size="sm"
-              variant="destructive"
-              name="intent"
-              value={intentValue}
-              submittingText="Deleting"
               isSubmittingOverride={isSubmitting}
+              name="intent"
+              size="sm"
+              submittingText="Deleting"
+              type="submit"
+              value={intentValue}
+              variant="destructive"
             >
               Delete
             </ButtonLoading>

@@ -7,11 +7,11 @@ import { cn } from "@/lib/utils";
 export function NavigationDesktop() {
   return (
     <nav
-      id="navigation-desktop"
       className={cn(
         "w-full rounded-full border bg-background px-4 py-2",
         "grid grid-cols-1 items-center gap-2 sm:grid-cols-3 sm:gap-8"
       )}
+      id="navigation-desktop"
     >
       <LogoNavigationLink />
 

@@ -12,8 +12,6 @@ export function NavigationDesktopLinks({ items }: { items: NavItem[] }) {
       {filterNavItems(items, isAuthenticated).map((item) => (
         <li key={item.to}>
           <NavLink
-            key={item.to}
-            to={item.to}
             className={({ isActive }) =>
               cn(
                 buttonVariants({ variant: "ghost", size: "sm" }),
@@ -21,6 +19,8 @@ export function NavigationDesktopLinks({ items }: { items: NavItem[] }) {
                 isActive && "bg-accent text-primary"
               )
             }
+            key={item.to}
+            to={item.to}
           >
             {item.label}
           </NavLink>

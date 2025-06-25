@@ -1,8 +1,14 @@
+__*
 .DS_Store
 .env
+.env.prod
+.env.production
+.env.staging
+.env.test
 .react-router/
 .react-router/*
+.turbo
+.vercel
 build/
 generated/
 node_modules/
-__*

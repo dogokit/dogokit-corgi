@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import * as React from "react";
+import React from "react";
 import { Button, type buttonVariants } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner-icon";
 import { useIsSubmitting } from "@/hooks/use-is-submitting";
@@ -29,7 +29,7 @@ const ButtonLoading = React.forwardRef<HTMLButtonElement, ButtonLoadingProps>(
     const isSubmitting = isSubmittingOverride || isSubmittingGlobal;
 
     return (
-      <Button size={size} ref={ref} disabled={isSubmitting} {...props}>
+      <Button disabled={isSubmitting} ref={ref} size={size} {...props}>
         {!isSubmitting && children}
         {isSubmitting && (
           <>

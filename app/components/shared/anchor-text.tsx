@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { cn } from "@/lib/utils";
 
@@ -23,16 +23,16 @@ const AnchorText = React.forwardRef<HTMLAnchorElement, AnchorProps>(
   ) => {
     return (
       <a
-        href={href}
-        target="_blank"
-        rel="noreferrer"
         className={cn(
           "prose-a-styles font-semibold",
           noBreak && "whitespace-pre",
           disabled && "cursor-not-allowed opacity-75",
           className
         )}
+        href={href}
         ref={ref}
+        rel="noreferrer"
+        target="_blank"
         {...props}
       >
         {children}

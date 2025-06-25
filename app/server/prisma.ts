@@ -15,4 +15,5 @@ const globalForPrisma = globalThis as unknown as {
 
 export const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
 
+// Access NODE_ENV directly without Zod
 if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

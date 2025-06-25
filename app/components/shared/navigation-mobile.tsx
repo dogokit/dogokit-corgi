@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { type LinkProps, NavLink, useNavigate } from "react-router";
 import { IconMenuAnimated } from "@/components/shared/icon-menu-animated";
 import { LogoNavigationLink } from "@/components/shared/logo";
@@ -18,21 +18,21 @@ export function NavigationMobile() {
 
   return (
     <nav
-      id="navigation-mobile"
       className={cn(
         "bg-background p-2",
         "flex w-full items-center justify-between"
       )}
+      id="navigation-mobile"
     >
       <LogoNavigationLink />
 
-      <Popover open={open} onOpenChange={setOpen}>
+      <Popover onOpenChange={setOpen} open={open}>
         <PopoverTrigger asChild>
           <Button
-            variant="ghost"
             className={cn(
               "extend-touch-target touch-manipulation items-center justify-start gap-2.5"
             )}
+            variant="ghost"
           >
             <div className="relative flex items-center justify-center">
               <span className="sr-only">Toggle Menu</span>
@@ -46,22 +46,22 @@ export function NavigationMobile() {
         </PopoverTrigger>
 
         <PopoverContent
-          className="no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100"
           align="start"
-          side="bottom"
           alignOffset={-16}
+          className="no-scrollbar h-(--radix-popper-available-height) w-(--radix-popper-available-width) overflow-y-auto rounded-none border-none bg-background/90 p-0 shadow-none backdrop-blur duration-100"
+          side="bottom"
           sideOffset={8}
         >
           <div className="flex flex-col gap-12 overflow-auto p-4">
             <NavSection
-              title="Menu"
               items={configSite.navItems}
               onOpenChange={setOpen}
+              title="Menu"
             />
             <NavSection
-              title="Auth"
               items={configSite.navAuthItems}
               onOpenChange={setOpen}
+              title="Auth"
             />
           </div>
         </PopoverContent>
@@ -86,8 +86,8 @@ function NavSection({
       <span className="font-medium text-muted-foreground text-sm">{title}</span>
       <ul className="flex flex-col gap-3 text-right">
         {filterNavItems(items, isAuthenticated).map((item, index) => (
-          <li key={index} className="flex w-full justify-end">
-            <NavLinkMobile to={item.to} onOpenChange={onOpenChange}>
+          <li className="flex w-full justify-end" key={index}>
+            <NavLinkMobile onOpenChange={onOpenChange} to={item.to}>
               {item.label}
             </NavLinkMobile>
           </li>
@@ -111,12 +111,12 @@ function NavLinkMobile({
   const navigate = useNavigate();
   return (
     <NavLink
-      to={to}
+      className={cn("font-medium text-2xl", className)}
       onClick={() => {
         navigate(to);
         onOpenChange?.(false);
       }}
-      className={cn("font-medium text-2xl", className)}
+      to={to}
       {...props}
     >
       {children}

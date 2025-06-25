@@ -1,4 +1,4 @@
-import { EyeIcon, EyeOffIcon } from "lucide-react";
+import { IconEye, IconEyeOff } from "@tabler/icons-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,18 +17,18 @@ export function InputPassword({
   return (
     <div className="relative">
       <Input
-        type={isShown ? "text" : "password"}
         placeholder={placeholder}
+        type={isShown ? "text" : "password"}
         {...props}
       />
       <Button
-        type="button"
+        className="absolute inset-y-0 right-0 my-1.5 me-1.5 flex w-16 gap-0.5"
         onClick={handleClick}
         size="xs"
+        type="button"
         variant="secondary"
-        className="absolute inset-y-0 right-0 my-1.5 me-1.5 flex w-18 gap-1"
       >
-        {isShown ? <EyeOffIcon /> : <EyeIcon />}
+        {isShown ? <IconEyeOff /> : <IconEye />}
         <span>{isShown ? "Hide" : "Show"}</span>
       </Button>
     </div>

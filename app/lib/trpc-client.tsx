@@ -4,7 +4,7 @@ import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 import { useState } from "react";
 import SuperJSON from "superjson";
-
+import { isDev } from "@/env";
 import type { AppRouter } from "@/server/trpc-router";
 
 function makeQueryClient() {
@@ -22,11 +22,10 @@ let browserQueryClient: QueryClient | undefined;
 function getQueryClient() {
   if (typeof window === "undefined") {
     return makeQueryClient();
-  } else {
-    if (!browserQueryClient) browserQueryClient = makeQueryClient();
-
-    return browserQueryClient;
   }
+  if (!browserQueryClient) browserQueryClient = makeQueryClient();
+
+  return browserQueryClient;
 }
 
 const getBaseUrl = () => {
@@ -34,16 +33,13 @@ const getBaseUrl = () => {
 
   if (process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
 
-  return `http://localhost:${process.env.PORT ?? 3000}`;
+  return `http://localhost:${process.env.PORT ?? 8000}`;
 };
 
 const links = [
   loggerLink({
     enabled: (op) => {
-      return (
-        process.env.NODE_ENV === "development" ||
-        (op.direction === "down" && op.result instanceof Error)
-      );
+      return isDev || (op.direction === "down" && op.result instanceof Error);
     },
   }),
 
@@ -69,7 +65,7 @@ export function TRPCReactProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TRPCProvider trpcClient={trpcClient} queryClient={queryClient}>
+      <TRPCProvider queryClient={queryClient} trpcClient={trpcClient}>
         {children}
       </TRPCProvider>
     </QueryClientProvider>

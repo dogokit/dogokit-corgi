@@ -14,6 +14,6 @@ export const ThemeSwitcherAction = () => {
   };
 
   return (
-    <ThemeSwitcher defaultValue="" value={value} onChange={handleChange} />
+    <ThemeSwitcher defaultValue="" onChange={handleChange} value={value} />
   );
 };

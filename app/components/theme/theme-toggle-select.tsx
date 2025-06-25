@@ -13,16 +13,16 @@ export default function ThemeToggleSelect() {
   const [theme, setTheme, { definedBy }] = useTheme();
   const value = definedBy === "SYSTEM" ? "" : (theme ?? "");
 
-  const handleChange = (value: string) => {
-    if (value === "") {
+  const handleChange = (newSelectValue: string) => {
+    if (newSelectValue === "") {
       setTheme(null);
     } else {
-      setTheme(value as Theme);
+      setTheme(newSelectValue as Theme);
     }
   };
 
   return (
-    <Select name="theme" value={value} onValueChange={handleChange}>
+    <Select name="theme" onValueChange={handleChange} value={value}>
       <SelectTrigger className="w-26">
         <SelectValue placeholder="Theme" />
       </SelectTrigger>

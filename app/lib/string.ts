@@ -1,6 +1,11 @@
 import { customAlphabet } from "nanoid";
 import pluralize from "pluralize";
 import slugify from "slugify";
+import { z } from "zod/v4";
+
+export function isValidUrl(url: string) {
+  return z.url().safeParse(url).success;
+}
 
 export function convertToSlug(...texts: string[]) {
   const textToSlug = texts.join(" ");
@@ -10,10 +15,6 @@ export function convertToSlug(...texts: string[]) {
 export function convertToSlugNanoId(...texts: string[]) {
   const textToSlug = texts.join(" ");
   return slugify(`${textToSlug}-${createNanoId()}`, { lower: true });
-}
-
-export function isValidUrl(url: string) {
-  return /^https?:\/\/\S+$/.test(url);
 }
 
 export function getUrlFromString(str: string) {
@@ -31,8 +32,8 @@ export function getUrlFromString(str: string) {
 
 export function truncateText(
   text: string,
-  charLimit: number = 30,
-  withEllipsis: boolean = true
+  charLimit = 30,
+  withEllipsis = true
 ) {
   if (!text || typeof text !== "string" || text.length <= charLimit)
     return text;
@@ -82,10 +83,9 @@ export function getUsernameFromEmail(email: string) {
   if (atIndex !== -1) {
     // Step 2: Replace '.' with '_'
     return email.substring(0, atIndex).replace(/\./g, "_");
-  } else {
-    // Handle the case where the string doesn't contain '@'
-    return email;
   }
+  // Handle the case where the string doesn't contain '@'
+  return email;
 }
 
 export function getNameInitials(fullname = "First Last") {
@@ -93,13 +93,19 @@ export function getNameInitials(fullname = "First Last") {
     .split(" ")
     .map((word, index) => {
       if (index < 2) return word.charAt(0).toUpperCase();
-      else return "";
+      return "";
     })
     .join("");
 }
 
 export function getNameParts(fullname: string) {
   const parts = fullname.split(" ");
+  if (parts.length === 1) {
+    return {
+      firstName: parts[0],
+      lastName: "",
+    };
+  }
   return {
     firstName: parts.slice(0, -1).join(" "),
     lastName: parts.slice(-1).join(" "),

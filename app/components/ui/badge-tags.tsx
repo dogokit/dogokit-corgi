@@ -40,6 +40,7 @@ const TagsContext = createContext<TagsContextType>({
   value: undefined,
   setValue: undefined,
   open: false,
+  // biome-ignore lint/suspicious/noEmptyBlockStatements: "From shadcn/ui. Flexible to change"
   onOpenChange: () => {},
   width: undefined,
   setWidth: undefined,
@@ -99,7 +100,7 @@ export const Tags = ({
     <TagsContext.Provider
       value={{ value, setValue, open, onOpenChange, width, setWidth }}
     >
-      <Popover open={open} onOpenChange={onOpenChange}>
+      <Popover onOpenChange={onOpenChange} open={open}>
         <div className={cn("relative w-full", className)} ref={ref}>
           {children}
         </div>
@@ -118,8 +119,8 @@ export const TagsTrigger = ({
   <PopoverTrigger asChild>
     <Button
       // role="combobox"
-      variant="outline"
       className={cn("h-auto w-full justify-between p-2", className)}
+      variant="outline"
       {...props}
     >
       <div className="flex flex-wrap items-center gap-1">
@@ -151,9 +152,9 @@ export const TagsValue = ({
       {children}
       {onRemove && (
         <button
-          type="button"
-          onClick={handleRemove}
           className="size-auto cursor-pointer hover:text-muted-foreground"
+          onClick={handleRemove}
+          type="button"
         >
           <XIcon size={12} />
         </button>

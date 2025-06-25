@@ -4,11 +4,11 @@ import { NavigationMobile } from "@/components/shared/navigation-mobile";
 export function LayoutHeader() {
   return (
     <header className="sticky top-0 z-40">
-      <div id="navigation-desktop" className="hidden p-4 md:flex">
+      <div className="hidden p-4 md:flex" id="navigation-desktop">
         <NavigationDesktop />
       </div>
 
-      <div id="navigation-mobile" className="flex md:hidden">
+      <div className="flex md:hidden" id="navigation-mobile">
         <NavigationMobile />
       </div>
     </header>

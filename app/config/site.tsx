@@ -1,10 +1,19 @@
-import { SiGithub, SiGoogle } from "@icons-pack/react-simple-icons";
+import {
+  IconBrandGithubFilled,
+  IconBrandGoogleFilled,
+} from "@tabler/icons-react";
 import type { JSX } from "react";
 import { href } from "react-router";
+import { envClient, isProd } from "@/env";
+
+export const configSiteServer: ConfigSiteServer = {
+  id: isProd ? envClient.VITE_APP_URL : "localhost",
+};
 
 export const configSite: ConfigSite = {
-  id: "localhost",
+  ...configSiteServer,
   name: "Dogokit Corgi",
+  domain: envClient.VITE_APP_URL,
   url: "https://github.com/dogokit/dogokit-corgi",
   ogImage: "/og/dogokit.jpg",
   description:
@@ -19,29 +28,34 @@ export const configSite: ConfigSite = {
   authOptions: ["social", "passkey", "email", "magic", "anonymous"],
   socialProviders: ["google", "github"],
   socialProviderButtons: [
-    { provider: "google", label: "Google", icon: <SiGoogle /> },
-    { provider: "github", label: "GitHub", icon: <SiGithub /> },
+    { provider: "google", label: "Google", icon: <IconBrandGoogleFilled /> },
+    { provider: "github", label: "GitHub", icon: <IconBrandGithubFilled /> },
   ],
 
   navItems: [
     { to: href("/"), label: "Home" },
     { to: href("/about"), label: "About" },
     { to: href("/examples"), label: "Examples" },
-    { to: "/404", label: "404" },
+    { to: href("/*", { "*": "404" }), label: "404" },
   ],
+
   navAuthItems: [
     { to: href("/signup"), label: "Sign Up", auth: false },
     { to: href("/signin"), label: "Sign In", auth: false },
-    // { to: href("/signout"), label: "Sign Out", auth: true },
     { to: href("/dashboard"), label: "Dashboard", auth: true },
   ],
 };
 
 // TODO: Zod Schema
 
-export type ConfigSite = {
+export type ConfigSiteServer = {
   id: string;
+  origin?: string;
+};
+
+export type ConfigSite = ConfigSiteServer & {
   name: string;
+  domain: string;
   url: string;
   ogImage?: string;
   description: string;

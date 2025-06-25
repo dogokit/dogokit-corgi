@@ -4,7 +4,7 @@ import { configSite } from "@/config/site";
 import { cn } from "@/lib/utils";
 
 const logoVariants = cva(
-  "rounded select-none inline-flex items-center gap-1 font-semibold",
+  "inline-flex select-none items-center gap-1 rounded font-semibold",
   {
     variants: {
       variant: {
@@ -59,12 +59,13 @@ export function Logo({
 }: LogoProps) {
   return (
     <span className={cn(logoVariants({ variant, size, className }))}>
+      {/** biome-ignore lint/performance/noImgElement: "It is fine" */}
       <img
-        src={imageUrl}
         alt={altText}
-        width={35}
-        height={35}
         className={cn(logoImageVariants({ size, className: classNameIcon }))}
+        height={35}
+        src={imageUrl}
+        width={35}
       />
       <span
         className={cn("whitespace-nowrap font-black font-brand", classNameText)}
@@ -78,7 +79,7 @@ export function Logo({
 export function LogoNavigationLink() {
   return (
     <div className="flex items-center gap-2">
-      <NavLink to={href("/")} className="focus-ring inline-flex items-center">
+      <NavLink className="focus-ring inline-flex items-center" to={href("/")}>
         <Logo className="p-2" />
       </NavLink>
     </div>

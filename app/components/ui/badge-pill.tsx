@@ -17,8 +17,8 @@ export const Pill = ({
   ...props
 }: PillProps) => (
   <Badge
-    variant={variant}
     className={cn("gap-2 rounded-full px-3 py-1.5 font-normal", className)}
+    variant={variant}
     {...props}
   />
 );
@@ -42,12 +42,12 @@ export type PillButtonProps = ComponentProps<typeof Button>;
 
 export const PillButton = ({ className, ...props }: PillButtonProps) => (
   <Button
-    variant="ghost"
-    size="icon"
     className={cn(
       "-my-2 -mr-2 size-6 rounded-full p-0.5 hover:bg-foreground/5",
       className
     )}
+    size="icon"
+    variant="ghost"
     {...props}
   />
 );
@@ -138,8 +138,8 @@ export const PillIcon = ({
   ...props
 }: PillIconProps) => (
   <Icon
-    size={12}
     className={cn("size-3 text-muted-foreground", className)}
+    size={12}
     {...props}
   />
 );

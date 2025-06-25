@@ -26,12 +26,12 @@ export const ChoiceboxItem = ({
   ...props
 }: ChoiceboxItemProps) => (
   <RadioGroupPrimitive.Item
+    asChild
     className={cn(
       "text-left",
       '[&[data-state="checked"]]:border-primary',
       '[&[data-state="checked"]]:bg-primary-foreground'
     )}
-    asChild
     {...props}
   >
     <Card

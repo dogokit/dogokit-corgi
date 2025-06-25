@@ -234,7 +234,7 @@ export const KanbanProvider = <
     const activeItem = data.find((item) => item.id === active.id);
     const overItem = data.find((item) => item.id === over.id);
 
-    if (!activeItem || !overItem) {
+    if (!(activeItem && overItem)) {
       return;
     }
 
@@ -304,12 +304,12 @@ export const KanbanProvider = <
   return (
     <KanbanContext.Provider value={{ columns, data, activeCardId }}>
       <DndContext
-        sensors={sensors}
+        accessibility={{ announcements }}
         collisionDetection={closestCenter}
         onDragEnd={handleDragEnd}
-        onDragStart={handleDragStart}
         onDragOver={handleDragOver}
-        accessibility={{ announcements }}
+        onDragStart={handleDragStart}
+        sensors={sensors}
         {...props}
       >
         <div

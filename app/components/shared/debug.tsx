@@ -37,7 +37,7 @@ export function Debug({
 
   return (
     <div>
-      <Collapsible open={isOpen} onOpenChange={setIsOpen} className="space-y-1">
+      <Collapsible className="space-y-1" onOpenChange={setIsOpen} open={isOpen}>
         <div className="flex flex-nowrap gap-1">
           <CollapsibleTrigger
             className={cn(buttonVariants({ variant: "outline", size: "xs" }))}
@@ -47,9 +47,9 @@ export function Debug({
           </CollapsibleTrigger>
 
           <Button
-            variant="outline"
-            size="icon-xs"
             onClick={() => setIsVisible(false)}
+            size="icon-xs"
+            variant="outline"
           >
             <XIcon className="size-3" />
           </Button>

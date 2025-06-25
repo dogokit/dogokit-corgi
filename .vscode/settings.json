@@ -2,6 +2,12 @@
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc][css][graphql]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
   "[postcss]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -13,11 +19,16 @@
   },
   "editor.codeActionsOnSave": {
     "source.action.useSortedKeys.biome": "explicit",
-    "source.fixAll.biome": "explicit"
+    "source.fixAll.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
   },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "emmet.showExpandedAbbreviation": "never",
   "peacock.color": "#a5b4fc",
-  "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.preferences.importModuleSpecifier": "non-relative",
+  "typescript.tsdk": "node_modules/typescript/lib",
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#d6ddfe",
     "activityBar.background": "#d6ddfe",

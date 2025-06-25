@@ -1,12 +1,12 @@
 services:
   postgres:
     container_name: dogokit-corgi-postgres
-    image: postgres:alpine
+    image: postgres:17-alpine
     restart: no
     volumes:
       - postgres_data:/var/lib/postgres
     ports:
-      - "50000:5432"
+      - ${POSTGRES_HOST_PORT}:5432
     env_file:
       - path: .env
         required: true

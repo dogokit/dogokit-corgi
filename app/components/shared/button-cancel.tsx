@@ -1,5 +1,5 @@
 import type { VariantProps } from "class-variance-authority";
-import * as React from "react";
+import React from "react";
 import { useNavigate } from "react-router";
 import { Button, type buttonVariants } from "@/components/ui/button";
 
@@ -28,10 +28,10 @@ const ButtonCancel = React.forwardRef<HTMLButtonElement, ButtonCancelProps>(
 
     return (
       <Button
-        variant={variant}
-        size={size}
-        ref={ref}
         onClick={handleCancel}
+        ref={ref}
+        size={size}
+        variant={variant}
         {...props}
       >
         {children}

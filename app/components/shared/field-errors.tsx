@@ -6,7 +6,7 @@ export function FieldErrors({ children }: { children: FieldMetadata<string> }) {
       {children.errors &&
         children.errors?.length > 0 &&
         children.errors?.map((error, index) => (
-          <div key={index} className="text-destructive text-xs">
+          <div className="text-destructive text-xs" key={index}>
             <p>{error}</p>
           </div>
         ))}

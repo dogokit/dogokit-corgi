@@ -1,4 +1,6 @@
+/** biome-ignore-all lint/nursery/noAwaitInLoop: "Prisma seed only" */
 import { PrismaClient } from "@/generated/prisma/client";
+import { devlog } from "@/lib/logger";
 import { dataExamples } from "./data/examples";
 
 const prisma = new PrismaClient();
@@ -27,14 +29,14 @@ async function main() {
       },
     });
 
-    console.info(`Example: ${upsertedExample.name}`);
+    devlog.info(`Example: ${upsertedExample.name}`);
   }
 }
 
 main()
   .then(() => prisma.$disconnect())
   .catch(async (e) => {
-    console.error(e);
+    devlog.error(e);
     await prisma.$disconnect();
     process.exit(1);
   });

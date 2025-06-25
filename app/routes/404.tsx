@@ -7,7 +7,7 @@ export const meta: Route.MetaFunction = () => {
   return [{ title: "404 Not Found" }];
 };
 
-export async function loader({ request }: Route.LoaderArgs) {
+export function loader({ request }: Route.LoaderArgs) {
   return { pathname: getPathname(request) };
 }
 

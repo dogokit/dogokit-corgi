@@ -80,10 +80,10 @@ export const SnippetCopyButton = ({
 
   return (
     <Button
-      variant="ghost"
-      size="icon"
-      onClick={copyToClipboard}
       className="opacity-0 transition-opacity group-hover:opacity-100"
+      onClick={copyToClipboard}
+      size="icon"
+      variant="ghost"
       {...props}
     >
       {children ?? icon}

@@ -90,20 +90,20 @@ export const RatingButton = ({
 
   return (
     <button
-      type="button"
-      onClick={handleClick}
-      onMouseEnter={handleMouseEnter}
-      onKeyDown={handleKeyDown}
-      onFocus={handleFocus}
-      onBlur={handleBlur}
-      disabled={readOnly}
       className={cn(
         "rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
         "p-0.5",
         readOnly && "cursor-default",
         className
       )}
+      disabled={readOnly}
+      onBlur={handleBlur}
+      onClick={handleClick}
+      onFocus={handleFocus}
+      onKeyDown={handleKeyDown}
+      onMouseEnter={handleMouseEnter}
       tabIndex={tabIndex}
+      type="button"
     >
       {cloneElement(icon, {
         size,
@@ -164,6 +164,7 @@ export const Rating = ({
   );
 
   const handleKeyDown = useCallback(
+    // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: "From shadcn/ui"
     (event: KeyboardEvent<HTMLButtonElement>) => {
       if (readOnly) {
         return;
@@ -219,11 +220,11 @@ export const Rating = ({
   return (
     <RatingContext.Provider value={contextValue}>
       <div
-        ref={containerRef}
-        className={cn("inline-flex items-center gap-0.5", className)}
-        role="radiogroup"
         aria-label="Rating"
+        className={cn("inline-flex items-center gap-0.5", className)}
         onMouseLeave={() => setHoverValue(null)}
+        ref={containerRef}
+        role="radiogroup"
         {...props}
       >
         {Children.map(children, (child, index) => {

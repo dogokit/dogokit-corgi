@@ -20,10 +20,10 @@ export const ButtonAnchor = ({
 }: ButtonAnchorProps) => {
   return (
     <a
-      href={href}
-      target="_blank"
-      rel="noreferrer noopener"
       className={cn(buttonVariants({ variant, size, className }))}
+      href={href}
+      rel="noreferrer noopener"
+      target="_blank"
       {...props}
     >
       {children}

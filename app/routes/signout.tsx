@@ -10,7 +10,7 @@ import {
 import { auth } from "@/server/better-auth";
 import type { Route } from "./+types/signout";
 
-export async function loader({ request }: Route.LoaderArgs) {
+export function loader({ request }: Route.LoaderArgs) {
   return requireAuthTrue(request);
 }
 
@@ -31,9 +31,9 @@ export default function SignOutRoute({ loaderData }: Route.ComponentProps) {
           (Soon) If you just want to switch accounts without signing out the
           currently active account, you can do that by adding another account.
         </p> */}
-        <Form method="post" action={href("/signout")}>
+        <Form action={href("/signout")} method="post">
           <Flex>
-            <ButtonLoading type="submit" submittingText="Signing Out...">
+            <ButtonLoading submittingText="Signing Out..." type="submit">
               Sign Out {username}
             </ButtonLoading>
             <ButtonCancel />

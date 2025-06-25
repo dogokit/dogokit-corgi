@@ -33,13 +33,13 @@ export function HomeHero({ hello }: { hello: string }) {
       </article>
 
       <Flex>
-        <ButtonAnchor size="lg" href="https://github.com/dogokit/dogokit-corgi">
+        <ButtonAnchor href="https://github.com/dogokit/dogokit-corgi" size="lg">
           <StarIcon />
           <span>Star on GitHub</span>
         </ButtonAnchor>
         <ButtonAnchor
-          size="lg"
           href="https://github.com/new?template_name=dogokit-corgi&template_owner=dogokit"
+          size="lg"
         >
           <CodeIcon />
           <span>Use Template</span>

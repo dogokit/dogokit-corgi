@@ -4,8 +4,8 @@ import { useEffect } from "react";
 import { Form, href, Link } from "react-router";
 import { toast } from "sonner";
 
-import { AuthButtonPasskey } from "@/components/shared/auth-button-passkey";
-import { AuthButtonProviders } from "@/components/shared/auth-button-providers";
+import { ButtonAuthPasskey } from "@/components/shared/button-auth-passkey";
+import { ButtonAuthProviders } from "@/components/shared/button-auth-providers";
 import { ButtonLoading } from "@/components/shared/button-loading";
 import { FieldErrors } from "@/components/shared/field-errors";
 import { InputPassword } from "@/components/shared/input-password";
@@ -17,12 +17,12 @@ import { cn } from "@/lib/utils";
 import { AuthSignInSchema, AuthSignUpSchema } from "@/schemas/auth";
 
 export function AuthCard({
-  cardMode = "signin",
+  authMode = "signin",
   lastResult,
   className,
   ...props
 }: React.ComponentProps<"div"> & {
-  cardMode: "signup" | "signin" | "signout" | "forgot-password";
+  authMode: "signup" | "signin" | "signout" | "forgot-password";
   lastResult: SubmissionResult | null | undefined;
 }) {
   const isSubmitting = useIsSubmitting();
@@ -43,8 +43,8 @@ export function AuthCard({
   });
 
   const mode = {
-    isSignUp: cardMode === "signup",
-    isSignIn: cardMode === "signin",
+    isSignUp: authMode === "signup",
+    isSignIn: authMode === "signin",
   };
 
   const text = {
@@ -73,14 +73,14 @@ export function AuthCard({
       {...props}
     >
       <div className="text-center">
-        <Logo size="xl" classNameText="hidden" />
+        <Logo classNameText="hidden" size="xl" />
         {mode.isSignUp && <p>Let's create your new account.</p>}
         {mode.isSignIn && <p>Continue with your account.</p>}
       </div>
 
       <fieldset className="flex w-full flex-col gap-2" disabled={isSubmitting}>
-        <AuthButtonProviders textAction={text.action} />
-        <AuthButtonPasskey isSignIn={mode.isSignIn} textAction={text.action} />
+        <ButtonAuthProviders textAction={text.action} />
+        {mode.isSignIn && <ButtonAuthPasskey textAction={text.action} />}
 
         <div className="relative my-2 text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-border after:border-t">
           <span className="relative z-10 bg-background px-2 text-muted-foreground">
@@ -89,23 +89,23 @@ export function AuthCard({
         </div>
 
         <Form
-          className="grid gap-4"
-          method="post"
           action={text.formActionPath}
+          className="grid gap-4"
           id={text.form.id}
+          method="post"
           onSubmit={text.form.onSubmit}
         >
           {mode.isSignUp && (
             <div className="grid gap-2">
               <Label htmlFor="name">Full Name</Label>
               <Input
-                required
-                id="name"
-                type="text"
-                placeholder="First Last"
-                name={fieldsSignUp.name.name}
                 autoComplete="name"
                 autoFocus={Boolean(fieldsSignUp.name.errors)}
+                id="name"
+                name={fieldsSignUp.name.name}
+                placeholder="First Last"
+                required
+                type="text"
               />
               <FieldErrors>{fieldsSignUp.name}</FieldErrors>
             </div>
@@ -115,13 +115,13 @@ export function AuthCard({
             <div className="grid gap-2">
               <Label htmlFor="username">Username</Label>
               <Input
-                required
-                id="username"
-                type="text"
-                placeholder="yourhandle"
-                name={fieldsSignUp.username.name}
                 autoComplete="username"
                 autoFocus={Boolean(fieldsSignUp.username.errors)}
+                id="username"
+                name={fieldsSignUp.username.name}
+                placeholder="yourhandle"
+                required
+                type="text"
               />
               <FieldErrors>{fieldsSignUp.username}</FieldErrors>
             </div>
@@ -130,13 +130,13 @@ export function AuthCard({
           <div className="grid gap-2">
             <Label htmlFor="email">Email</Label>
             <Input
-              required
-              id="email"
-              type="email"
-              placeholder="email@example.com"
-              name={text.fields.email.name}
               autoComplete="email webauthn"
               autoFocus={Boolean(fieldsSignUp.email.errors)}
+              id="email"
+              name={text.fields.email.name}
+              placeholder="email@example.com"
+              required
+              type="email"
             />
             <FieldErrors>{fieldsSignIn.email}</FieldErrors>
           </div>
@@ -146,45 +146,61 @@ export function AuthCard({
               <Label htmlFor="password">Password</Label>
               {mode.isSignIn && (
                 <Link
-                  to={href("/forgot-password")}
                   className="text-secondary text-xs leading-none"
+                  to={href("/forgot-password")}
                 >
                   Forgot password?
                 </Link>
               )}
             </div>
             <InputPassword
-              required
-              id="password"
-              name={text.fields.password.name}
               autoComplete="current-password webauthn"
               autoFocus={Boolean(fieldsSignUp.password.errors)}
+              id="password"
+              name={text.fields.password.name}
+              required
             />
             <FieldErrors>{fieldsSignIn.password}</FieldErrors>
           </div>
 
           <ButtonLoading
-            type="submit"
             className="w-full"
             submittingText={text.submitting}
+            type="submit"
           >
             {text.idle}
           </ButtonLoading>
         </Form>
 
-        {mode.isSignIn && (
-          <div className="text-center text-sm">
-            Don&apos;t have an account?{" "}
-            <Link to={href("/signup")} className="underline underline-offset-4">
-              Sign up
-            </Link>
-          </div>
-        )}
+        <div className="text-center text-sm">
+          {mode.isSignUp && (
+            <p>
+              Already have an account?{" "}
+              <Link
+                className="underline underline-offset-4"
+                to={href("/signin")}
+              >
+                Sign in
+              </Link>
+            </p>
+          )}
+          {mode.isSignIn && (
+            <p>
+              Don't have an account?{" "}
+              <Link
+                className="underline underline-offset-4"
+                to={href("/signup")}
+              >
+                Sign up
+              </Link>
+            </p>
+          )}
+        </div>
       </fieldset>
 
       {mode.isSignUp && (
         <p className="max-w-xs text-pretty text-center text-muted-foreground text-xs *:[a]:underline *:[a]:underline-offset-4 *:[a]:hover:text-primary">
-          By clicking continue, you agree to our{" "}
+          By creating an account, you agree to our{" "}
           <Link to={href("/about")}>Terms of Service</Link>,{" "}
           <Link to={href("/about")}>Privacy Policy</Link>, and{" "}
           <Link to={href("/about")}>Cookies Policy</Link>.

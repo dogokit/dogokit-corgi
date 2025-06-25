@@ -16,19 +16,19 @@ export function FormSearch({
   const query = searchParams.get("q") ?? "";
 
   return (
-    <Form method="GET" action={action} className="w-full">
+    <Form action={action} className="w-full" method="GET">
       <fieldset className="group relative flex items-center gap-1">
-        <Label htmlFor="search" className="sr-only">
+        <Label className="sr-only" htmlFor="search">
           Search
         </Label>
         <Input
-          type="search"
+          autoComplete="off"
+          autoFocus={autoFocus}
+          className="w-full py-2 ps-10 pe-3"
+          defaultValue={query}
           name="q"
           placeholder={placeholder}
-          defaultValue={query}
-          autoFocus={autoFocus}
-          autoComplete="off"
-          className="w-full py-2 ps-10 pe-3"
+          type="search"
         />
         <span className="pointer-events-none absolute flex ps-3">
           <SearchIcon className="text-muted-foreground group-focus-within:text-primary" />

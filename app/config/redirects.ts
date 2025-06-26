@@ -1,5 +1,10 @@
 import { configSite } from "@/config/site";
-import type { ConfigRedirect } from "@/lib/redirector";
+
+export type ConfigRedirect = {
+  path: string;
+  url?: string;
+  to?: string;
+};
 
 export const configRedirects: ConfigRedirect[] = [
   { path: "/account", to: "/user/account" },

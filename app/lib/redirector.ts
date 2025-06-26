@@ -1,11 +1,6 @@
 import { redirect } from "react-router";
+import type { ConfigRedirect } from "@/config/redirects";
 import { configSite } from "@/config/site";
-
-export type ConfigRedirect = {
-  path: string;
-  url?: string;
-  to?: string;
-};
 
 export function redirectRouteToUrl(
   request: Request,
@@ -25,6 +20,8 @@ export function redirectRouteToUrl(
   }
 
   if (foundItem.url && !foundItem.to) return redirect(foundItem.url);
+
   if (!foundItem.url && foundItem.to) return redirect(foundItem.to);
+
   return null;
 }

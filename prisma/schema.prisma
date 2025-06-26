@@ -31,7 +31,6 @@ model User {
   username        String? @unique
   displayUsername String?
 
-  phone               String?  @unique
   phoneNumber         String?  @unique
   phoneNumberVerified Boolean? @default(false)
 

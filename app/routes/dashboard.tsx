@@ -1,14 +1,10 @@
-import { href, redirect } from "react-router";
-
 import { Debug } from "@/components/shared/debug";
 import { UserProfileCard } from "@/components/shared/user-profile-card";
 import { requireAuthUserData } from "@/server/auth-helper";
 import type { Route } from "./+types/dashboard";
 
-export async function loader({ request }: Route.LoaderArgs) {
-  const { isAuthenticated, user } = await requireAuthUserData(request);
-  if (!isAuthenticated) return redirect(href("/signin"));
-  return { user };
+export function loader({ request }: Route.LoaderArgs) {
+  return requireAuthUserData(request);
 }
 
 export default function UserDashboardRoute({

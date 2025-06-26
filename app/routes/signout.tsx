@@ -16,8 +16,8 @@ export function loader({ request }: Route.LoaderArgs) {
 
 export default function SignOutRoute({ loaderData }: Route.ComponentProps) {
   const { user } = loaderData;
-  const username = user?.username ? `@${user?.username}` : "@anonymous";
-  const email = user?.email || "Anonymous";
+  const username = user.username ? `@${user.username}` : "@anonymous";
+  const email = user.email || "Anonymous";
 
   return (
     <>

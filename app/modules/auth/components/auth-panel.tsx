@@ -132,7 +132,6 @@ export function AuthPanel({
                     required
                     {...getInputProps(fieldsSignUp.username, { type: "text" })}
                   />
-                  fields
                   <FieldErrors>{fieldsSignUp.username}</FieldErrors>
                 </div>
               </>

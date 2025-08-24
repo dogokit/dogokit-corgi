@@ -9,7 +9,9 @@
 
 ## Goal
 
-[Dogokit Corgi](https://github.com/dogokit/dogokit-corgi) is the implementation details of [Dogokit Akita](https://github.com/dogokit/dogokit-akita). This template is optimized for the shortest time to production, but with long-term development as well.
+[Dogokit Corgi](https://github.com/dogokit/dogokit-corgi) is the implementation details of [Dogokit Akita](https://github.com/dogokit/dogokit-akita).
+
+This template is optimized for the shortest time to production, but with long-term development as well.
 
 ### Tech Stack and Setup
 
@@ -17,7 +19,7 @@ Core:
 
 - [x] [TypeScript v5.8](https://typescriptlang.org)
   - [x] Optional: [TypeScript v7 with `tsgo` setup](https://github.com/microsoft/typescript-go)
-- [x] [Bun v1](https://bun.sh)
+- [x] [Bun v1](https://bun.sh) (replace Node.js and npm)
 - [x] [React v19](https://react.dev)
 - [x] [React Router v7 Framework (Remix)](https://reactrouter.com)
   - [x] Integration with tRPC and Better Auth
@@ -82,7 +84,9 @@ Services:
 
 ### Setup Dependencies
 
-Use [Bun](https://bun.sh) for dependency management and scripts. Ensure [Bun is installed](https://bun.sh/docs/installation):
+Use [Bun](https://bun.sh) for dependency management and scripts. It's an alternative to Node.js and npm.
+
+Ensure [Bun is installed](https://bun.sh/docs/installation):
 
 ```sh
 curl -fsSL https://bun.sh/install | bash
@@ -100,7 +104,7 @@ bun install
 Check, format, lint to ensure the setup is fine:
 
 ```sh
-bun check
+bun typecheck
 ```
 
 If want to automatically format & lint the code:
@@ -147,6 +151,8 @@ Optional for OAuth and Payment:
 
 - `*_CLIENT_ID` and `*_CLIENT_SECRET`: For OAuth related, [check Guide: OAuth](./docs/GUIDE_OAUTH.md)
 - `*_ACCESS_TOKEN` and `*_WEBHOOK_SECRET` for payment related.
+
+Along with other variables.
 
 ### Database Setup
 

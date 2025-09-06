@@ -7,12 +7,21 @@ import {
 } from "@react-router/dev/routes";
 
 export default [
+  /**
+   * JSX Routes
+   */
+
   layout("web/layouts/layout-app.tsx", [
     layout("web/layouts/layout-padded.tsx", [
       index("web/home.tsx"),
       route("about", "web/about.tsx"),
       route("examples", "web/examples.tsx"),
       route("examples/:slug", "web/examples-slug.tsx"),
+
+      ...prefix("demos", [
+        route("timezone", "web/demos/timezone.tsx"),
+        route("scroll-area", "web/demos/scroll-area.tsx"),
+      ]),
     ]),
 
     layout("web/layouts/layout-auth.tsx", [
@@ -25,6 +34,10 @@ export default [
 
     route("*", "web/not-found.tsx"), // Custom 404
   ]),
+
+  /**
+   * Non-JSX Routes
+   */
 
   ...prefix("api", [
     route("auth/*", "web/api/auth.ts"),

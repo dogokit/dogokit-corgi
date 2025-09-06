@@ -3,7 +3,7 @@
   <p align="center">
     <span>React Router v7 Framework, tRPC, Prisma, Better Auth, Tailwind CSS, shadcn/ui</span>
     <br />
-    <a href="https://corgi.dogokit.com">🚧 Live Demo</a>
+    <a href="https://dogokit-corgi.allnimal.com">🚧 Live Demo</a>
   </p>
 </div>
 
@@ -148,7 +148,7 @@ Required when using Docker Compose:
 
 Optional for OAuth and Payment:
 
-- `*_CLIENT_ID` and `*_CLIENT_SECRET`: For OAuth related, [check Guide: OAuth](./docs/GUIDE_OAUTH.md)
+- `*_CLIENT_ID` and `*_CLIENT_SECRET`: For OAuth related, [check docs on OAuth](./docs/oauth.md)
 - `*_ACCESS_TOKEN` and `*_WEBHOOK_SECRET` for payment related.
 
 Along with other variables.

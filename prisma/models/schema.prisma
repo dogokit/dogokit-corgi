@@ -15,7 +15,8 @@ datasource db {
 generator client {
   provider        = "prisma-client"
   output          = "../../app/generated/prisma"
-  previewFeatures = ["queryCompiler", "driverAdapters", "views", "relationJoins", "fullTextSearchPostgres"]
+  previewFeatures = ["driverAdapters", "queryCompiler", "views", "relationJoins", "fullTextSearchPostgres"]
+  // runtime         = "bun"
 }
 
 generator zod {

@@ -6,10 +6,15 @@ type SeedUser = Pick<User, "name" | "username" | "email" | "emailVerified"> & {
 
 export const dataSeedUsers: SeedUser[] = [
   {
-    name: "Example",
+    name: "Example Admin",
+    username: "admin",
+    email: "admin@example.com",
+    password: "admin_admin_admin",
+  },
+  {
+    name: "Example Regular User",
     username: "example",
     email: "example@example.com",
-    emailVerified: true,
     password: "example_example_example",
   },
 ];

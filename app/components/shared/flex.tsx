@@ -6,7 +6,7 @@ export function Flex({
   ...props
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
-    <div className={cn("flex flex-wrap gap-1", className)} {...props}>
+    <div className={cn("flex flex-wrap gap-2", className)} {...props}>
       {children}
     </div>
   );

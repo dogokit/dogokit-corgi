@@ -24,13 +24,14 @@ import {
   getNameParts,
 } from "@/lib/text/convert";
 import { sendEmail } from "@/modules/email/send-email";
+import { envClient } from "@/modules/env/env";
 import { envServer } from "@/modules/env/env.server";
 
 export type DefaultAuthSession = typeof auth.$Infer.Session;
 
 export const auth = betterAuth({
   appName: configSite.name,
-  baseURL: envServer.APP_URL,
+  baseURL: envClient.VITE_APP_URL,
   basePath: "/api/auth",
   database: prismaAdapter(prisma, { provider: "postgresql" }),
   advanced: { database: { generateId: false } },

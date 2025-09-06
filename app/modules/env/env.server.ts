@@ -12,7 +12,6 @@ export const envServer = createEnv({
 
     VITE_APP_NAME: z.string().default("Dogokit Corgi"),
 
-    APP_URL: z.url(),
     DOMAIN: z.string(),
 
     DATABASE_URL: z.url(),

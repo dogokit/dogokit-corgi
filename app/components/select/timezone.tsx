@@ -1,4 +1,3 @@
-import { CheckIcon, ChevronDownIcon } from "lucide-react";
 import { useId, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +14,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { Icons } from "@/lib/icons";
 import { cn } from "@/lib/utils";
 
 export function SelectTimezone() {
@@ -67,7 +67,7 @@ export function SelectTimezone() {
                   )?.label
                 : "Select timezone"}
             </span>
-            <ChevronDownIcon
+            <Icons.ChevronDown
               aria-hidden="true"
               className="shrink-0 text-muted-foreground/80"
               size={16}
@@ -100,7 +100,7 @@ export function SelectTimezone() {
                   >
                     {label}
                     {value === itemValue && (
-                      <CheckIcon className="ml-auto" size={16} />
+                      <Icons.Check className="ml-auto" size={16} />
                     )}
                   </CommandItem>
                 ))}

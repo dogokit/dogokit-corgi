@@ -135,7 +135,6 @@ Required for application:
 
 - `VITE_APP_NAME`
 - `VITE_APP_URL`
-- `APP_URL`
 - `DOMAIN`
 - `BETTER_AUTH_SECRET`
 - `DATABASE_URL`

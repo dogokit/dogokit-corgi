@@ -2,16 +2,10 @@
   "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
   "extends": ["ultracite"],
   "assist": {
-    "actions": {
-      "source": {
-        "organizeImports": "on"
-      }
-    },
+    "actions": { "source": { "organizeImports": "on" } },
     "enabled": true
   },
-  "files": {
-    "ignoreUnknown": true
-  },
+  "files": { "ignoreUnknown": true },
   "formatter": {
     "attributePosition": "auto",
     "enabled": true,
@@ -40,14 +34,18 @@
         "noSvgWithoutTitle": "off",
         "useSemanticElements": "off"
       },
+      "correctness": {
+        "noNestedComponentDefinitions": "off",
+        "useUniqueElementIds": "off"
+      },
       "nursery": {
-        "useSortedClasses": "on",
-        "useConsistentTypeDefinitions": "off",
-        "useAnchorHref": "off",
-        "useImageSize": "off",
+        "noReactForwardRef": "off",
         "noUnnecessaryConditions": "off",
+        "useAnchorHref": "off",
         "useConsistentArrowReturn": "off",
-        "noReactForwardRef": "off"
+        "useConsistentTypeDefinitions": "off",
+        "useImageSize": "off",
+        "useSortedClasses": "on"
       },
       "performance": {
         "noImgElement": "off",
@@ -55,12 +53,8 @@
       },
       "recommended": true,
       "style": {
-        "useBlockStatements": "off",
-        "noMagicNumbers": "off"
-      },
-      "correctness": {
-        "useUniqueElementIds": "off",
-        "noNestedComponentDefinitions": "off"
+        "noMagicNumbers": "off",
+        "useBlockStatements": "off"
       },
       "suspicious": {
         "noArrayIndexKey": "off",

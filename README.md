@@ -1,7 +1,7 @@
 <div align="center">
 	<h1 align="center">🐶Dogokit Corgi</h1>
   <p align="center">
-    <span>React Router v7 Framework, tRPC, Prisma, Better Auth, Tailwind CSS, shadcn/ui</span>
+    <span>React Router Framework, tRPC, Prisma, Better Auth, Tailwind CSS, shadcn/ui</span>
     <br />
     <a href="https://dogokit-corgi.allnimal.com">🚧 Live Demo</a>
   </p>
@@ -34,9 +34,7 @@ Core:
 - [x] [tRPC v11](https://trpc.io)
 - [x] [Zod v4](https://zod.dev)
 - [x] [Conform v1](https://conform.guide)
-- [x] [Prisma ORM v6](https://prisma.io)
-  - [x] Prisma Accelerate
-  - [x] Prisma Postgres
+- [x] [Prisma ORM v7](https://prisma.io)
 - [x] [PostgreSQL v17](https://postgresql.org)
 - [x] [Better Auth v1](https://better-auth.com)
   - [x] Email and Password
@@ -52,7 +50,7 @@ Utilities:
   - [x] Env: [t3-env](https://env.t3.gg)
 - [x] Git Hooks: [Husky v9](https://typicode.github.io/husky)
 - [ ] Testing Framework: [Vitest v3](https://vitest.dev)
-- [ ] ENd-to-End Testing: [Playwright](https://playwright.dev)
+- [ ] End-to-End Testing: [Playwright](https://playwright.dev)
 - [x] Add Code, Not Dependencies: [Sly CLI](https://sly-cli.fly.dev)
 - [x] Maintainable Source Registries: [jsrepo](https://jsrepo.dev)
 
@@ -60,22 +58,21 @@ Services:
 
 - [x] Code Editor Settings and Extensions
   - [x] [VS Code / Cursor / Windsurf](https://code.visualstudio.com/docs/configure/settings)
-- [x] AI Rules
-  - [x] [Cursor](https://docs.cursor.com/context/rules)
-  - [x] [Windsurf](https://windsurf.com/editor/directory)
-- [ ] AI Toolkits and Frameworks
-  - [ ] [AI SDK](https://ai-sdk.dev)
-  - [ ] [Mastra](https://mastra.ai)
-  - [ ] [Context7](https://context7.com)
-- [ ] Rate Limiter: [Unkey](https://unkey.dev)
-- [ ] Error Tracking: [Sentry](https://sentry.io)
 - [ ] Email: [Resend](https://resend.com), [Amazon SES](https://aws.amazon.com/ses)
 - [ ] Payment: [Polar](https://polar.sh)
-- [ ] File Upload & Image: [Uploadcare](https://uploadcare.com), [Cloudflare R2](https://cloudflare.com/products/r2), [Imgix](https://imgix.com)
+- [ ] Error Tracking: [Sentry](https://sentry.io)
+- [ ] File Storage/Upload: [Uploadcare](https://uploadcare.com), [Cloudflare R2](https://cloudflare.com/products/r2), [Imgix](https://imgix.com)
 - [ ] Analytics: [Posthog](https://posthog.com)
 - [ ] Security: [Arcjet](https://arcjet.com)
 - [ ] API Key: [Unkey](https://unkey.dev)
 - [ ] Documentation: [Fumadocs](https://fumadocs.com)
+- AI Rules
+  - [x] [Cursor](https://docs.cursor.com/context/rules)
+  - [x] [Windsurf](https://windsurf.com/editor/directory)
+- AI Toolkits and Frameworks
+  - [ ] [AI SDK](https://ai-sdk.dev)
+  - [ ] [Mastra](https://mastra.ai)
+  - [ ] [Context7](https://context7.com)
 - AI Agents
   - [ ] General: [Codegen](https://codegen.com)
   - [ ] Code Review: [CodeRabbit](https://coderabbit.ai)

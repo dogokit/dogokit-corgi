@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/2.2.0/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.2.6/schema.json",
   "extends": ["ultracite"],
   "assist": {
     "actions": {
@@ -45,7 +45,9 @@
         "useConsistentTypeDefinitions": "off",
         "useAnchorHref": "off",
         "useImageSize": "off",
-        "noUnnecessaryConditions": "off"
+        "noUnnecessaryConditions": "off",
+        "useConsistentArrowReturn": "off",
+        "noReactForwardRef": "off"
       },
       "performance": {
         "noImgElement": "off",
